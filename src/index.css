@@ -18,6 +18,7 @@ code {
 ul,
 ol {
   list-style: inside;
+  list-style-type:none;
   text-decoration: none;
   margin: 0;
   padding: 0;

@@ -28,17 +28,22 @@ export const MovieDetails = () => {
  
     const backLinkHref = location.state?.from ?? "/";
 
-    const {title,overview,genres,poster_path } = movie;
+    const {title,overview,genres,poster_path,vote_average } = movie;
     return (
         <Container>
             <LinkToBack to={backLinkHref}>Back</LinkToBack>
-            <Box display="flex"  p={3} mt={2} mb={2} >
-                {poster_path!==null ? (<ItemImgCover>
+            <Box display="flex" p={3} mt={2} mb={2} >
+                {poster_path !== null ? (
+                    <ItemImgCover>
                         <img src={BASE_URL_IMAGE+poster_path} alt={title}/>
                     </ItemImgCover>) : <ItemImgCover></ItemImgCover>}
                     
-                <Box ml={3} p={2}>
+                <Box ml={3} p={2} width={ 1/2}>
                     <Title>{title}</Title>
+                    <Box p={2} mb={2}>
+                        <BoxTitle>User score:</BoxTitle>
+                        <p>{vote_average.toFixed(2)}</p>
+                    </Box>
                     <Box p={2} mb={2}>
                         <BoxTitle>Genres:</BoxTitle>
                         <p>{genres.map(genre => genre.name).join(', ')} </p>    

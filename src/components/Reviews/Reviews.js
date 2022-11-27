@@ -11,17 +11,15 @@ const Reviews = () => {
         fetchMovieReviews(movieId).then(setReviews);
     }, [movieId]);
      
-    if (!reviews || reviews.results.length===0) {
-        return (
-            <Container>
-                <p>We don't have any reviews for this movie.</p>
-            </Container>);
+    if (!reviews) {
+        return ;
     }
 
     const { results } = reviews;
 
     return (
-<Container>
+        <Container>
+            {results.length===0 && <p>We don't have any reviews for this movie.</p>}
         <ul>
             {results.map(({ content,author,id }) => (
                 <Item key={id}>

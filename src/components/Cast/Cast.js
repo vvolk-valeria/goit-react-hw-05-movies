@@ -12,17 +12,15 @@ const Cast = () => {
         fetchMovieCast(movieId).then(setCastMembers);
     }, [movieId]);
      
-    if (!castMembers || castMembers.cast.length===0) {
-        return (
-            <div>
-                <p>We have no information about the cast of this film.</p>
-            </div>);
+    if (!castMembers ) {
+        return;
     }
 
     const { cast } = castMembers;
 
     return (
         <Container>
+            {cast.length===0 && <p>We have no information about the cast of this film.</p>}
         <List>
             {cast.map(({ cast_id, character, name, profile_path }) => (
                 <LinkItem key={cast_id}>
