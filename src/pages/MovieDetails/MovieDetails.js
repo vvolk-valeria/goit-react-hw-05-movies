@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Suspense } from "react";
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { BASE_URL_IMAGE } from '../../components/refs';
+import { Loader } from "../../components/Loader/Loader";
 import { Container,LinkItem,ItemImgCover,Title,BoxTitle,LinkToBack,InfoTitle } from "./MovieDetails.styled";
 
 export const MovieDetails = () => {
@@ -56,7 +57,7 @@ export const MovieDetails = () => {
             </Box>
 
             </Box>
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loader/>}>
                 <Outlet />
             </Suspense>
         </Container>
