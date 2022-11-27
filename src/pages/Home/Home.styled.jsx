@@ -52,7 +52,7 @@ export const ItemImgCover = styled.div`
   margin-right: auto;
   margin-left: auto;
   width: 250px;
-  height: 375px;
+  max-height: 375px;
   background-color: #a1a1a1;
   overflow: hidden;
   object-fit: cover;

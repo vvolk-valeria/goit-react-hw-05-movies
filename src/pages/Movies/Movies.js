@@ -1,13 +1,17 @@
 import { fetchSearchMovies } from '../../API/fetchApi';
 import { useState } from 'react';
 import { SearchBox } from '../../components/SearchBox/SearchBox';
-import SearchMovieList from 'components/SearchMovieList/SearchMovieList';
+//import SearchMovieList from 'components/SearchMovieList/SearchMovieList';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { lazy } from 'react';
+
+const SearchMovieList = lazy(() => import('../../components/SearchMovieList/SearchMovieList'));
+
 //import { useLocation } from 'react-router-dom';
 
 
-export const Movies = () => {
+ const Movies = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [movies, setMovies] = useState([]);
  
@@ -40,3 +44,5 @@ export const Movies = () => {
         </div>
     )
 }
+
+export default Movies;
