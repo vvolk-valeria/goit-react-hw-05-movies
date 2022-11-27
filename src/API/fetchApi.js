@@ -6,11 +6,7 @@ let mediaType = "all";
 let timeWindow = "day";
 let language = "en-US";
 let page = 1;
-// const seachParams = new URLSearchParams({
-//   image_type: 'photo',
-//   orientation: 'horizontal', 
-//   safesearch: true,
-// })
+
 
 export function fetchTrendingMovies () { 
  return fetch(`${BASE_URL}/trending/${mediaType}/${timeWindow}?api_key=${API_KEY}`)
@@ -24,7 +20,7 @@ export function fetchTrendingMovies () {
 
 
 export function fetchSearchMovies(searchQuery) { 
- return fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&${language}&${page}&include_adult=false`)
+ return fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&${language}&query=${searchQuery}&${page}&include_adult=false`)
         .then(response => {
           if (response.ok) {
             return response.json();

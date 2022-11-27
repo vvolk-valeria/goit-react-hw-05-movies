@@ -1,7 +1,7 @@
 import { fetchMovieReviews } from 'API/fetchApi';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import {Item,Container,Title ,Text } from "./Reviews.styled";
 
 const Reviews = () => {
     const { movieId } = useParams();
@@ -13,22 +13,23 @@ const Reviews = () => {
      
     if (!reviews || reviews.results.length===0) {
         return (
-            <div>
+            <Container>
                 <p>We don't have any reviews for this movie.</p>
-            </div>);
+            </Container>);
     }
 
     const { results } = reviews;
-console.log(results);
-    return (
 
+    return (
+<Container>
         <ul>
             {results.map(({ content,author,id }) => (
-                <li key={id}>
-                    <p>{author}</p>
-                    <p>{content}</p>
-                </li>))}
-        </ul>
+                <Item key={id}>
+                    <Title>{author}</Title>
+                    <Text>{content}</Text>
+                </Item>))}
+            </ul>
+        </Container>
     )
 }
 

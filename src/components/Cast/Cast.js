@@ -1,7 +1,8 @@
 import { fetchMovieCast } from 'API/fetchApi';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { BASE_URL_IMAGE } from './refs';
+import { BASE_URL_IMAGE } from '../refs';
+import { Container,List,LinkItem,ItemImgCover,Title } from "./Cast.styled";
 
 const Cast = () => {
     const { movieId } = useParams();
@@ -21,17 +22,19 @@ const Cast = () => {
     const { cast } = castMembers;
 
     return (
-        <ul>
+        <Container>
+        <List>
             {cast.map(({ cast_id, character, name, profile_path }) => (
-                <li key={cast_id}>
-                         {profile_path!==null ? (<div>
+                <LinkItem key={cast_id}>
+                         {profile_path!==null ? (<ItemImgCover>
                         <img src={BASE_URL_IMAGE+profile_path} alt={name}/>
-                    </div>) : <div></div>}
+                    </ItemImgCover>) : <ItemImgCover></ItemImgCover>}
                     
-                    <p>{character}</p>
-                    <p>{name}</p>
-                </li>))}
-        </ul>)
+                    <Title>{character}</Title>
+                    <Title>{name}</Title>
+                </LinkItem>))}
+        </List>
+    </Container>)
 }
 
 export default Cast;
