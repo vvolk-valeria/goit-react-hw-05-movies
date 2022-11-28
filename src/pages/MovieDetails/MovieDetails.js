@@ -11,9 +11,12 @@ export const MovieDetails = () => {
     const {movieId} = useParams();
     const [movie, setMovie] = useState(null);
     const location = useLocation();
-    
+   // const navigate = useNavigate();
+
     useEffect(() => {
-        fetchMovieById(movieId).then(setMovie);
+        fetchMovieById(movieId).then(setMovie).catch(error => {
+        console.log('Error',error);
+        });
     }, [movieId]);
 
     if (!movie) {
@@ -24,13 +27,17 @@ export const MovieDetails = () => {
   { href: 'cast', text: 'Cast'},
   { href: 'reviews', text: 'Reviews' },
     ];
+
+    // const handleGoBack = () => {
+    //     navigate(location.state.from)
+    // }
     
- 
     const backLinkHref = location.state?.from ?? "/";
 
     const {title,overview,genres,poster_path,vote_average } = movie;
     return (
         <Container>
+            {/* <button type='button' onClick={handleGoBack}>Go Back</button> */}
             <LinkToBack to={backLinkHref}>Back</LinkToBack>
             <Box display="flex" p={3} mt={2} mb={2} >
                 {poster_path !== null ? (
@@ -58,7 +65,7 @@ export const MovieDetails = () => {
                 <InfoTitle>Additional information</InfoTitle>
 
                 <Box as="ul" display="flex" flexDirection="column" >
-                {navItems.map(({ href,text })=>(<LinkItem to={href} key={href} > {text }</LinkItem>))}
+                {navItems.map(({ href,text })=>(<LinkItem to={href} key={href} state={{ from: backLinkHref }}> {text }</LinkItem>))}
             </Box>
 
             </Box>
