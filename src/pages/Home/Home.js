@@ -14,7 +14,7 @@ const TrendingMovies = () => {
     }, []);
 
     const { results } = movies;
-console.log(results);
+
     if (!results) {
         return;
     }

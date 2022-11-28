@@ -10,8 +10,6 @@ import { useSearchParams } from "react-router-dom";
 const SearchMovieList = lazy(() => import('../../components/SearchMovieList/SearchMovieList'));
 
 
-
-
  const Movies = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [movies, setMovies] = useState([]);
@@ -46,8 +44,8 @@ const SearchMovieList = lazy(() => import('../../components/SearchMovieList/Sear
      useEffect(() => {
 
          const QueryFromSearchParams = searchParams.get('query');
-          
-         if (QueryFromSearchParams === null) {
+    
+         if (!QueryFromSearchParams) {
              return;
          }
 
