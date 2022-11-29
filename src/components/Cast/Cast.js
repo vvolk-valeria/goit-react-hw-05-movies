@@ -9,6 +9,7 @@ const Cast = () => {
     const [castMembers, setCastMembers] = useState(null);
 
     useEffect(() => {
+        
         fetchMovieCast(movieId).then(setCastMembers).catch(error => {
         console.log('Error',error);
       });

@@ -34,9 +34,11 @@ const SearchMovieList = lazy(() => import('../../components/SearchMovieList/Sear
        toast.error('Enter term for search images and photos.');
       return;
     }
-        fetchSearchMovies(searchQuery).then(setMovies);
-        setSearchQuery('');
-        e.target.reset();
+        // fetchSearchMovies(searchQuery).then(setMovies).catch(error => {
+        //     console.log('Error',error);
+        // }); 
+    setSearchQuery('');
+    e.target.reset();
 
     };
 
@@ -50,6 +52,7 @@ const SearchMovieList = lazy(() => import('../../components/SearchMovieList/Sear
          }
 
          if (searchQuery === '') {
+         
              fetchSearchMovies(QueryFromSearchParams)
                  .then(setMovies)
                  .catch(error => {

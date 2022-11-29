@@ -14,9 +14,11 @@ export const MovieDetails = () => {
    // const navigate = useNavigate();
 
     useEffect(() => {
+       
         fetchMovieById(movieId).then(setMovie).catch(error => {
         console.log('Error',error);
         });
+        
     }, [movieId]);
 
     if (!movie) {
