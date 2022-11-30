@@ -44,16 +44,16 @@ const SearchMovieList = lazy(() => import('../../components/SearchMovieList/Sear
 
    
      useEffect(() => {
+         const queryFromSearchParams = searchParams.get('query');
 
-         const QueryFromSearchParams = searchParams.get('query');
     
-         if (!QueryFromSearchParams) {
+         if (!queryFromSearchParams) {
              return;
          }
 
          if (searchQuery === '') {
          
-             fetchSearchMovies(QueryFromSearchParams)
+             fetchSearchMovies(queryFromSearchParams)
                  .then(setMovies)
                  .catch(error => {
                     console.log('Error',error);
